@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {StudentExpandInfo} from './StudentExpandInfo'
+import { StudentExpandInfo } from './StudentExpandInfo';
 
 export const Student = props => {
   const [expand, setExpand] = useState(false);
@@ -12,16 +12,6 @@ export const Student = props => {
   const arrAvg = arr =>
     arr.reduce((a, b) => parseInt(a) + parseInt(b), 0) / arr.length;
 
-
-  const StudentContainer = styled.div`
-    border: 1px solid black;
-    margin-top: 2rem;
-    margin: auto;
-    width: 80vh;
-    display: inline-flex;
-    height: auto;
-  `;
-
   return (
     <StudentContainer>
       <ProfilePicContainer>
@@ -32,13 +22,18 @@ export const Student = props => {
           <h1>
             {props.student.firstName} {props.student.lastName}
           </h1>
-          <button onClick={toggleExpand}>{expand ? '-' : '+'}</button>
+          <button id='expand-btn' onClick={toggleExpand}>{expand ? '-' : '+'}</button>
         </UserTitle>
         <h4>Email: {props.student.email}</h4>
         <h4>Company: {props.student.company}</h4>
         <h4>Skill: {props.student.skill}</h4>
         <h4>Average: {arrAvg(props.student.grades)}%</h4>
-        {expand && <StudentExpandInfo student={props.student} tags={props.tags} expand={expand} />}
+        {expand && (
+          <StudentExpandInfo
+            student={props.student}
+            tags={props.tags}
+          />
+        )}
       </UserInfo>
     </StudentContainer>
   );
@@ -71,7 +66,7 @@ const UserTitle = styled.div`
   width: 100%;
   h1 {
     line-height: 0px;
-    width: 80%;
+    width: 90%;
   }
   button {
     background-color: white;
@@ -82,22 +77,14 @@ const UserTitle = styled.div`
   button:focus {
     outline: none;
   }
+  button:hover {
+    color: black;
+  }
 `;
-
-// .userContainer {
-//     margin-top: 2rem;
-//     margin: auto;
-//     padding-bottom: 3rem;
-//     width: 80vw;
-//     height: 20vh;
-//     display: inline-flex;
-
-//   }
-
-//   .expandUserContainer {
-//     margin-top: 2rem;
-//     margin: auto;
-//     width: 80vw;
-//     height: auto;
-//     display: inline-flex;
-//   }
+const StudentContainer = styled.div`
+  margin-top: 2rem;
+  margin: auto;
+  width: 100%;
+  display: inline-flex;
+  height: auto;
+`;

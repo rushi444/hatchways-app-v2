@@ -26,4 +26,6 @@ export const Students = props => {
   );
 };
 
-const StudentsContainer = styled.div``;
+const StudentsContainer = styled.div`
+width: 100%
+`;

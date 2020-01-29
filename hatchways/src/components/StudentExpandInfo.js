@@ -7,14 +7,9 @@ import { addTag } from '../redux/actions';
 export const StudentExpandInfo = props => {
   const dispatch = useDispatch();
 
-  const [tagExpand, setTagExpand] = useState(false);
   const [addTagText, setAddTagText] = useState('');
 
   const tags = props.tags;
-
-  const toggleTagInput = () => {
-    setTagExpand(!tagExpand);
-  };
 
   const addTagTextHandler = e => {
     setAddTagText(e.target.value);
@@ -37,14 +32,16 @@ export const StudentExpandInfo = props => {
           );
         })}
       </GradeList>
-      {tags.length > 0 &&
-        tags.map((tag, index) => <Tag key={index} tag={tag} />)}
-      <NewTagButton onClick={toggleTagInput}>new tag</NewTagButton>
+      {tags?.map((tag, index) => (
+        <Tag key={index} tag={tag} />
+      ))}
+
       <form onSubmit={submitNewTag}>
-        <input
+        <TagInput
+          id='add-tag-input'
           type='text'
           name='text'
-          placeholder='add tags here...'
+          placeholder='Add a Tag...'
           value={addTagText}
           onChange={addTagTextHandler}
         />
@@ -59,4 +56,11 @@ const GradeList = styled.ul`
   padding-left: 0;
 `;
 
-const NewTagButton = styled.button``;
+const TagInput = styled.input`
+  border: none;
+  border-bottom: 1px solid gray;
+  :focus {
+    outline: none;
+    border-bottom: 1px solid black;
+  }
+`;

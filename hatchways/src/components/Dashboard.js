@@ -4,7 +4,7 @@ import { getAllStudents } from '../redux/actions';
 import styled from 'styled-components';
 import { Students } from './Students';
 
-export const SearchBars = () => {
+export const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -73,6 +73,7 @@ export const SearchBars = () => {
     <>
       <SearchContainer>
         <SearchInput
+          id='name-input'
           type='text'
           name='text'
           placeholder='search names here...'
@@ -96,14 +97,16 @@ export const SearchBars = () => {
 
 const SearchContainer = styled.form`
   width: 100%;
+  margin-bottom: 1rem;
 `;
 
 const SearchInput = styled.input`
   width: 100%;
   height: 3vh;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
   :focus {
     outline: none;
+    border-bottom: 1.2px solid black;
   }
 `;
