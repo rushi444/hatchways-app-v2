@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Tag } from './Tag';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ export const StudentExpandInfo = props => {
   const [tagExpand, setTagExpand] = useState(false);
   const [addTagText, setAddTagText] = useState('');
 
-const tags = props.tags;
+  const tags = props.tags;
 
   const toggleTagInput = () => {
     setTagExpand(!tagExpand);
@@ -20,10 +20,10 @@ const tags = props.tags;
     setAddTagText(e.target.value);
   };
 
-  const submitNewTag = (e) => {
+  const submitNewTag = e => {
     e.preventDefault();
     dispatch(addTag(props.student.id, addTagText));
-    setAddTagText('')
+    setAddTagText('');
   };
 
   return (
@@ -38,7 +38,7 @@ const tags = props.tags;
         })}
       </GradeList>
       {tags.length > 0 &&
-        tags.map((tag, index) => <div key={index}>{tag}</div>)}
+        tags.map((tag, index) => <Tag key={index} tag={tag} />)}
       <NewTagButton onClick={toggleTagInput}>new tag</NewTagButton>
       <form onSubmit={submitNewTag}>
         <input
@@ -60,5 +60,3 @@ const GradeList = styled.ul`
 `;
 
 const NewTagButton = styled.button``;
-
-

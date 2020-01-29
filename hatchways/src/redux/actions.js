@@ -14,16 +14,6 @@ export const getAllStudents = () => async dispatch => {
   }
 };
 
-export const UPDATE_STUDENTS = 'UPDATE_STUDENTS';
-
-export const updateStudents = searchTerm => dispatch => {
-  try {
-    dispatch({ type: UPDATE_STUDENTS, payload: searchTerm });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export const ADD_TAG = 'ADD_TAG';
 
 export const addTag = (id, tag) => dispatch => {

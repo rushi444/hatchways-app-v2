@@ -22,8 +22,6 @@ export const Student = props => {
     height: auto;
   `;
 
-  console.log('student tags',props.tags)
-
   return (
     <StudentContainer>
       <ProfilePicContainer>
